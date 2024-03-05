@@ -1,0 +1,9 @@
+[build]
+command = "pnpm run build"
+publish = "build"
+
+[[plugins]]
+package = "netlify-plugin-cache"
+
+  [plugins.inputs]
+  paths = ["_cache"]
