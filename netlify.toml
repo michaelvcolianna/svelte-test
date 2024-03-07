@@ -3,7 +3,7 @@ command = "pnpm run build"
 publish = "build"
 
 [context.production.environment]
-NODE_VERSION = "18.14.0"
+NODE_VERSION = "20.6.0"
 
 [[plugins]]
 package = "./plugins/netlify-plugin-hivemq-cache"
