@@ -9,11 +9,11 @@ export const onPreBuild = async function ({
 }) {
   console.log(`HiveMQ cache plugin pre build:`)
 
-  console.log(`-- Is ${CACHE_PATH} in Netlify cache?`, existsSync(`${CACHE_DIR}/_cache`))
+  console.log(`-- Is _cache in Netlify cache?`, existsSync(`${CACHE_DIR}/_cache`))
   
-  await cache.restore(CACHE_PATH)
+  await cache.restore('./_cache')
 
-  console.log(`-- ${CACHE_PATH} exists?`, existsSync(CACHE_PATH))
+  console.log(`-- Cache restored: ${CACHE_PATH} exists?`, existsSync(CACHE_PATH))
 }
 
 export const onPostBuild = async function ({
@@ -22,7 +22,7 @@ export const onPostBuild = async function ({
 }) {
   console.log(`HiveMQ cache plugin post build:`)
 
-  await cache.save(CACHE_PATH)
+  await cache.save('./_cache')
   
   const ls = readdirSync(ROOT_PATH)
   ls.filter((entry) => entry !== 'build').forEach((entry) => {
@@ -32,7 +32,5 @@ export const onPostBuild = async function ({
     rmSync(ENTRY_PATH, { recursive: true, force: true })
   })
   
-  console.log('-- Directory contents:', readdirSync(ROOT_PATH))
-
-  console.log(`-- Is ${CACHE_PATH} in Netlify cache?`, existsSync(`${CACHE_DIR}/_cache`))
+  console.log(`-- Cache saved: Is _cache in Netlify cache?`, existsSync(`${CACHE_DIR}/_cache`))
 }
