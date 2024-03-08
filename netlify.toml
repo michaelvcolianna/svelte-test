@@ -3,6 +3,7 @@ command = "pnpm run build"
 publish = "build"
 
 [context.production.environment]
+PHP_VERSION = "8.2.16"
 NODE_VERSION = "20.11.1"
 
 [[plugins]]
