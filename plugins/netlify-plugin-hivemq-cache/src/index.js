@@ -1,29 +1,20 @@
-import { existsSync } from 'node:fs'
+// import { existsSync } from 'node:fs'
 
 const ROOT_PATH = new URL('../../../', import.meta.url).pathname
-const CONFIG_FILE = `${ROOT_PATH}svelte.config.js`
-const TEST_FILE = `${ROOT_PATH}scripts/test.sh`
+const CACHE_DIR = `${ROOT_PATH}_cache`
 
 export const onPreBuild = async function ({
   utils: { cache },
 }) {
-  // try {
-  //   console.log('Build constants', constants)
-  // } catch (error) {
-  //   build.failBuild('Error message', { error })
-  // }
+  const restoreCache = await cache.restore(CACHE_DIR)
 
-  console.log(`Root path is ${ROOT_PATH}, config file is ${CONFIG_FILE}, does config file exist?`, existsSync(CONFIG_FILE))
+  console.log(`HiveMQ cache pre-build: ${CACHE_DIR}`, restoreCache)
 }
 
 export const onPostBuild = async function ({
   utils: { cache },
 }) {
-  // try {
-  //   console.log('Build constants', constants)
-  // } catch (error) {
-  //   build.failBuild('Error message', { error })
-  // }
+  const saveCache = await cache.save(CACHE_DIR)
 
-  console.log(`Test script is ${TEST_FILE}, does test script exist?`, existsSync(TEST_FILE))
+  console.log(`HiveMQ cache post-build: ${CACHE_DIR}`, saveCache)
 }
