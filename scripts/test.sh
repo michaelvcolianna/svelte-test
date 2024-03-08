@@ -2,8 +2,8 @@
 
 PROJECT_ROOT="${SCRIPT_FOLDER}/.."
 
-if [ ! -d "${WEBSITE_ROOT}/_cache" ]; then
-    echo "${WEBSITE_ROOT}/_cache does not exist, creating"
+if [ ! -d "${PROJECT_ROOT}/_cache" ]; then
+    echo "${PROJECT_ROOT}/_cache does not exist, creating"
     mkdir -p "_cache"
 fi
 
