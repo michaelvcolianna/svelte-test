@@ -5,7 +5,7 @@ const CONFIG_FILE = `${ROOT_PATH}/svelte.config.js`
 const TEST_FILE = `${ROOT_PATH}/scripts/test.sh`
 
 export const onPreBuild = async function ({
-  utils: { status },
+  utils: { cache },
 }) {
   // try {
   //   console.log('Build constants', constants)
@@ -13,11 +13,11 @@ export const onPreBuild = async function ({
   //   build.failBuild('Error message', { error })
   // }
 
-  status.show({ summary: `Config file exists? ${existsSync(CONFIG_FILE)}` })
+  console.log(`Root path is ${ROOT_PATH}, config file is ${CONFIG_FILE}`)
 }
 
 export const onPostBuild = async function ({
-  utils: { status },
+  utils: { cache },
 }) {
   // try {
   //   console.log('Build constants', constants)
@@ -25,5 +25,5 @@ export const onPostBuild = async function ({
   //   build.failBuild('Error message', { error })
   // }
 
-  status.show({ summary: `Test script exists? ${existsSync(TEST_FILE)}` })
+  console.log(`Test script is ${TEST_FILE}`)
 }
