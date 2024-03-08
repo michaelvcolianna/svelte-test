@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "test.sh"
-cwd
+pwd
 
 # if [ ! -d ../_cache ]
 # then
