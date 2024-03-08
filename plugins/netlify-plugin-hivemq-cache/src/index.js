@@ -4,7 +4,6 @@ const ROOT_PATH = new URL('../../../', import.meta.url).pathname
 const CACHE_PATH = `${ROOT_PATH}_cache`
 
 export const onPreBuild = async function ({
-  constants: { CACHE_DIR },
   utils: { cache },
 }) {
   console.log(`HiveMQ cache plugin pre build:`)
@@ -17,7 +16,6 @@ export const onPreBuild = async function ({
 }
 
 export const onPostBuild = async function ({
-  constants: { CACHE_DIR },
   utils: { cache },
 }) {
   console.log(`HiveMQ cache plugin post build:`)
